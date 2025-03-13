@@ -22,3 +22,4 @@ oil_series_int = oil_series.astype('int')
 
 mean = oil_series_int.values.mean()
 print('La media dei numeri interi è',mean)
+# test commit
