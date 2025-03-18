@@ -54,8 +54,28 @@ def print_lowest_prices(data_series, count):
 def print_less_price(data_series, price):
     print(data_series.loc[data_series < price])
 
+def print_perc_difference(data_series):
+    print('\nMAX VALUE\n')
+    print(data_series.max())
+    perc_series = (data_series - data_series.max()).abs().multiply(100).divide(data_series.max()).round(2)
+    print(perc_series)
+
+def print_quantile(data_series):
+    x = data_series.quantile(0.1, interpolation='linear')
+    print("10° quantile = "+str(x))
+    y = data_series.quantile(0.9, interpolation='linear')
+    print("90° quantile = "+str(y))
+
 #print_mean_iloc(oil_series, 10)
 print('\nLOWEST PRICE\n')
-print_lowest_prices(oil_series, 10)
+#print_lowest_prices(oil_series, 10)
 print('\nLESS THAN PRICE\n')
-print_less_price(oil_series, 50)
+#print_less_price(oil_series, 50)
+
+#print(oil_series.multiply(1.1))
+print_perc_difference(oil_series)
+
+oil_series_counts = oil_series.astype('int').value_counts(normalize=True)
+print(oil_series_counts)
+
+print_quantile(oil_series)
