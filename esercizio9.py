@@ -9,6 +9,8 @@ print(series_example.dropna())
 print(series_example.dropna().reset_index(drop=True))
 
 # Sostituisce i valori mancanti con 'INCOMPLETE'
+# si può specificare anche i valori per ogni specifica colonna, ad esempio:
+# series_example.fillna({'price':0, 'quantity':1})
 print(series_example.fillna('INCOMPLETE'))
 
 # Numero dei valori mancanti
