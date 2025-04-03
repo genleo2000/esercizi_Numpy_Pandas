@@ -17,3 +17,10 @@ print(data_sql.head(20))
 stores = pd.read_csv('assignment/retail/stores.csv')
 res = stores.query('city == "Quito"')
 print(res.head(20))
+
+stores.sort_values(['city','type'], ascending=[True, False], inplace=True)
+print(stores.head(20))
+
+# Ordina gli indici delle colonne
+stores.sort_index(axis=1, inplace=True)
+print(stores.head(20))
