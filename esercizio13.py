@@ -17,3 +17,11 @@ print(df.memory_usage(deep=True))
 df = df.astype({'date':'datetime64[ns]'})
 
 print(df.memory_usage(deep=True))
+
+print('\n\n')
+# Stampa un dataframe
+print(type(df.head(20).groupby('family', observed=False)[['sales']]))
+# Stampa una series
+print(type(df.head(20).groupby('family', observed=False)['sales']))
+
+print(df.head(20).groupby('family', observed=False)['sales'].sum())
