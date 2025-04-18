@@ -13,6 +13,10 @@ transaction_group = transaction.groupby(['store_nbr','month'], observed=False, a
 print(transaction_group.sort_values(['month','transactions'], ascending=[True,False]).head(20))
 
 transaction_aggr = transaction.groupby(['store_nbr','month'], observed=False)[['transactions']].sum()
-print(transaction_aggr.head(10))
+print(transaction_aggr.reset_index().head(10))
 # Cerca store_nbr=1 e month=3 in base all'ordine di apparizione nel DataFrame
 print(transaction_aggr.loc[(1,3)])
+
+print('\n\n')
+transaction_aggr = transaction.groupby(['store_nbr','month'], observed=False).agg({'transactions': ['sum','mean']})
+print(transaction_aggr)
